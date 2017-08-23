@@ -7,26 +7,26 @@
   /**
    * 非冲突
    */
-  // $.noConflict = function () {
-  //   root.$ = null
-  //   return $
-  // }
+  $.noConflict = function () {
+    root.$ = null
+    return $
+  }
 
-  root.$
+  root.$ = $
 }(global)
 
 /**
  * 处理冲突
  */
-// const jQuery = $.noConflict()
-
-// function a() {
-//   jQuery()
-// }
+const jQuery = $.noConflict()
 
 function a() {
-  $()
+  jQuery()
 }
+
+// function a() {
+//   $()
+// }
 
 
 !function (root) {
@@ -37,5 +37,9 @@ function a() {
 
   root.$ = $
 }(global)
+
+// function a() {
+//   $()
+// }
 
 a()

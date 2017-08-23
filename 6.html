@@ -14,8 +14,9 @@ function require(path, cb) {
         let module
         if (typeof factory === 'function') {
             module = factory()
+        } else {
+            module = factory
         }
-        module = factory
         require._[path] = module
         cb(module)
     }
@@ -26,7 +27,7 @@ require.stack = []
 
 // 实现一个对应的define
 function define(factory) {
-    require.stack.push(factory)
+    require.stack.push(factory) // 将方法推导堆栈里面
 }
 
 require('./cases/6.require-no-name.js', function (mod) {
